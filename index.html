@@ -3,382 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DragDrive | Premium Pre-Owned Sourcing</title>
+    <title>DragDrive | Internal Team Portal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --apex-red: #d71920;
-            --matte-black: #0a0a0a;
-            --industrial-grey: #161616;
-            --slate-border: #262626;
-            --text-white: #ffffff;
-            --text-silver: #a0a0a0;
-            --accent-glow: rgba(215, 25, 32, 0.4);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            --primary-red: #ff4d4d;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f1f5f9;
+            --accent-blue: #38bdf8;
         }
 
         body {
-            background-color: var(--matte-black);
-            color: var(--text-white);
-            line-height: 1.7;
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.6;
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            padding: 1.2rem 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 10, 10, 0.98);
-            border-bottom: 1px solid var(--slate-border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-red);
         }
 
         .logo {
-            font-size: 1.4rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--text-white);
-            text-decoration: none;
-        }
-
-        .logo span { color: var(--apex-red); }
-
-        .nav-status {
-            font-size: 0.65rem;
-            letter-spacing: 1px;
-            padding: 4px 12px;
-            border: 1px solid var(--apex-red);
-            color: var(--apex-red);
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
             text-transform: uppercase;
-            font-weight: bold;
+            color: var(--primary-red);
+            text-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
         }
 
-        /* --- HERO SECTION (DUAL TONE SPLIT) --- */
-        .hero {
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--slate-border);
+        .container {
+            max-width: 900px;
+            margin: -50px auto 50px;
+            padding: 0 20px;
         }
 
-        .hero-split {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40%;
-            height: 100%;
-            background: var(--apex-red);
-            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-            z-index: 1;
-            opacity: 0.9;
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: left;
-            width: 84%;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 7rem);
-            line-height: 0.85;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -4px;
+        h2 {
+            color: var(--accent-blue);
+            border-left: 4px solid var(--primary-red);
+            padding-left: 15px;
             margin-bottom: 1.5rem;
         }
 
-        .hero p {
-            max-width: 550px;
-            font-size: 1.2rem;
-            color: var(--text-silver);
-            margin-bottom: 2.5rem;
-        }
-
-        /* --- STATS DASHBOARD --- */
-        .stats-bar {
+        .role-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            background: var(--industrial-grey);
-            border-top: 1px solid var(--slate-border);
-            border-bottom: 1px solid var(--slate-border);
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .stat-item {
-            padding: 40px;
-            text-align: center;
-            border-right: 1px solid var(--slate-border);
+        .form-group {
+            margin-bottom: 1.2rem;
         }
 
-        .stat-item:last-child { border-right: none; }
-
-        .stat-value {
+        label {
             display: block;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--apex-red);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--accent-blue);
         }
 
-        .stat-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-silver);
-        }
-
-        /* --- CORE MISSION (THE LONG SECTION) --- */
-        .section {
-            padding: 100px 8%;
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-        }
-
-        .label {
-            color: var(--apex-red);
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--industrial-grey);
-            padding: 40px;
-            border: 1px solid var(--slate-border);
-            position: relative;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--apex-red);
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--text-white);
-        }
-
-        .card p {
-            color: var(--text-silver);
-            font-size: 0.95rem;
-        }
-
-        /* --- PROCESS TIMELINE --- */
-        .process-line {
-            margin-top: 80px;
-            border-left: 2px solid var(--slate-border);
-            padding-left: 30px;
-        }
-
-        .step {
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .step::before {
-            content: '';
-            position: absolute;
-            left: -37px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            background: var(--apex-red);
-            border-radius: 50%;
-        }
-
-        .step h4 {
-            text-transform: uppercase;
-            color: var(--apex-red);
-            font-size: 0.9rem;
-        }
-
-        /* --- GITHUB FEATURES: DYNAMIC PROGRESS BARS --- */
-        .verification-meter {
-            margin-top: 15px;
-            height: 4px;
-            background: #222;
+        input, textarea, select {
             width: 100%;
-        }
-
-        .meter-fill {
-            height: 100%;
-            background: var(--apex-red);
-        }
-
-        /* --- CTA SECTION --- */
-        .cta-box {
-            background: var(--industrial-grey);
-            padding: 80px 5%;
-            text-align: center;
-            border-top: 1px solid var(--apex-red);
-        }
-
-        .cta-box h2 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--apex-red);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background: #0f172a;
             color: white;
-            padding: 22px 60px;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1rem;
-            transition: 0.4s;
-            border: none;
-            cursor: pointer;
+            box-sizing: border-box;
         }
 
-        .btn:hover {
-            background: white;
-            color: black;
-            box-shadow: 0 0 30px var(--accent-glow);
+        .submit-btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #e60000;
+            transform: translateY(-2px);
         }
 
         footer {
-            padding: 60px 8%;
-            border-top: 1px solid var(--slate-border);
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: #555;
-        }
-
-        /* --- SCROLL-TO-TOP FEATURE --- */
-        .top-link {
-            text-decoration: none;
-            color: var(--text-silver);
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 768px) {
-            .hero-split { display: none; }
-            .hero h1 { font-size: 3.5rem; }
-            .stats-bar { grid-template-columns: 1fr; }
+            text-align: center;
+            padding: 3rem;
+            font-size: 0.9rem;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">DRAG<span>DRIVE</span></a>
-        <div class="nav-status">NETWORK ACTIVE // v2.0.4</div>
-    </nav>
+<header>
+    <div class="logo"><i class="fas fa-car-side"></i> DRAGDRIVE</div>
+    <p style="font-size: 1.2rem; opacity: 0.8;">The Precision Engine of the Used Car Market</p>
+</header>
 
-    <header class="hero">
-        <div class="hero-split"></div>
-        <div class="hero-content">
-            <h1>APEX<br>SOURCING</h1>
-            <p>Premium dealer-verified pre-owned acquisition. We bypass public listings to connect retail buyers with elite, off-market inventory.</p>
-            <a href="mailto:dragdrive.com@gmail.com" class="btn">Inquire Now</a>
-        </div>
-    </header>
+<div class="container">
+    <div class="section-card">
+        <h2>About the Mission</h2>
+        <p>DragDrive is an exclusive automotive network designed to solve the lack of trust in the pre-owned vehicle industry. We don't just list cars; we facilitate transactions between high-reputation dealers and serious buyers through a tech-first approach.</p>
+    </div>
 
-    <section class="stats-bar">
-        <div class="stat-item">
-            <span class="stat-value">35%</span>
-            <span class="stat-label">Min. Op Margin</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-value">48H</span>
-            <span class="stat-label">Reputation Sweep</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-value">400+</span>
-            <span class="stat-label">Vetted Nodes</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-value">TOP</span>
-            <span class="stat-label">Tier Sourcing</span>
-        </div>
-    </section>
+    <div class="section-card">
+        <h2>Operations & Integrity</h2>
+        <p>As a team member, your goal is to maintain the "DragDrive Standard." This involves identifying verified inventory, managing high-intent leads, and ensuring every interaction reflects our commitment to performance and transparency.</p>
+    </div>
 
-    <section class="section" id="process">
-        <div class="section-header">
-            <span class="label">The Protocol</span>
-            <h2>Vetting & Acquisition</h2>
-        </div>
+    <div class="section-card">
+        <h2>Employee Onboarding Form</h2>
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 2rem;">Please complete your profile to finalize your access to the DragDrive internal dashboard.</p>
         
-        <div class="grid">
-            <div class="card">
-                <h3>Dealer Filtering</h3>
-                <p>We only engage with dealerships that hold Tier-1 reputation scores. No independent auctions, no unverified lots.</p>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="John Doe" required>
             </div>
-            <div class="card">
-                <h3>Off-Market Leads</h3>
-                <p>DragDrive accesses inventory before it hits the retail floor, ensuring our buyers get first-strike advantage on high-demand stock.</p>
+            
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="tel" name="phone" placeholder="+91 00000-00000" required>
             </div>
-            <div class="card">
-                <h3>History Certification</h3>
-                <p>A mandatory 100-point forensic check on every vehicle. We verify every kilometer and every previous transaction.</p>
-            </div>
-        </div>
 
-        <div class="process-line">
-            <div class="step">
-                <h4>01 // Identification</h4>
-                <p style="color: var(--text-silver);">Sourcing units from premium dealer channels.</p>
-                <div class="verification-meter"><div class="meter-fill" style="width: 25%;"></div></div>
+            <div class="form-group">
+                <label>Residential Address</label>
+                <textarea name="address" rows="3" placeholder="Full permanent address" required></textarea>
             </div>
-            <div class="step">
-                <h4>02 // Verification</h4>
-                <p style="color: var(--text-silver);">Rigorous multi-point diagnostic testing.</p>
-                <div class="verification-meter"><div class="meter-fill" style="width: 60%;"></div></div>
-            </div>
-            <div class="step">
-                <h4>03 // Acquisition</h4>
-                <p style="color: var(--text-silver);">Finalizing off-market purchase for the client network.</p>
-                <div class="verification-meter"><div class="meter-fill" style="width: 100%;"></div></div>
-            </div>
-        </div>
-    </section>
 
-    <section class="cta-box">
-        <span class="label" style="margin-bottom: 20px; display: block;">Strategic Entry</span>
-        <h2>Ready for Operations?</h2>
-        <p style="color: var(--text-silver); max-width: 600px; margin: 0 auto 40px;">Currently accepting strategic retail partners and individual buyers looking for certified premium stock.</p>
-        <a href="mailto:dragdrive.com@gmail.com" class="btn">Deploy Inquiry</a>
-    </section>
+            <div class="form-group">
+                <label>Highest Qualification</label>
+                <input type="text" name="qualification" placeholder="Degree / Specialization" required>
+            </div>
 
-    <footer>
-        <div>&copy; 2026 DRAGDRIVE // PRE-OWNED ACQUISITION NETWORK // MUMBAI</div>
-        <a href="#" class="top-link">Back to Top &uarr;</a>
-    </footer>
+            <div class="form-group">
+                <label>Years of Relevant Experience</label>
+                <input type="number" name="experience" placeholder="e.g. 2" required>
+            </div>
+
+            <div class="form-group">
+                <label>Previous Company / Role</label>
+                <input type="text" name="prev_role" placeholder="Last held position">
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT PROFILE TO HR</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 DragDrive Automotive Technologies. Proprietary & Confidential.
+</footer>
 
 </body>
 </html>
-
